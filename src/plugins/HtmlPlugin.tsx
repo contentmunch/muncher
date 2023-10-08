@@ -18,7 +18,7 @@ export const HtmlPlugin: React.FC<HtmlPluginProps> = ({html, onChange}) => {
             $getRoot().select();
             $insertNodes(nodes);
         });
-    }, [html]);
+    }, [html, editor]);
 
     return (
         <OnChangePlugin
