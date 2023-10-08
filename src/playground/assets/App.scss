@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto+Slab&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+@import "src/assets/scss/variables";
+
+body {
+  margin: 0;
+  background: #eee;
+
+}
+
+main {
+  padding: 2rem;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+@media (min-width: $large-size) {
+  .container {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    width: 54rem;
+  }
+}
+
+@media (min-width: $extra-large-size) {
+  .container {
+    width: 70rem;
+  }
+}

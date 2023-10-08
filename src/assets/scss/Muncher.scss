@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto+Slab&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+@import "variables";
+
+$muncher-editor-font: $sans-serif-font !default;
+
+.ltr {
+  text-align: left;
+}
+
+.rtl {
+  text-align: right;
+}
+
+.muncher-editor {
+  font-size: 100%;
+  padding: .2rem .5rem;
+  color: $primary-color;
+  position: relative;
+  font-weight: 400;
+  text-align: left;
+  border-radius: .6rem .6rem .1rem .1rem;
+}
+
+.muncher-editor-inner {
+  //width: 788px;
+  background: $primary-background-color;
+  position: relative;
+}
+
+.muncher-editor-input {
+  font-family: $muncher-editor-font;
+  min-height: 20vh;
+  //resize: none;
+  position: relative;
+  tab-size: 1;
+  outline: 0;
+  padding: .9rem .6rem;
+  caret-color: #444;
+}
+
+.muncher-editor-placeholder {
+  color: $disabled-color;
+  overflow: hidden;
+  position: absolute;
+  text-overflow: ellipsis;
+  top: 1rem;
+  left: .6rem;
+  font-size: .9rem;
+  user-select: none;
+  display: inline-block;
+  pointer-events: none;
+}
+
+.muncher-editor-text-bold {
+  font-weight: bold;
+}
+
+.muncher-editor-text-italic {
+  font-style: italic;
+}
+
+.muncher-editor-text-underline {
+  text-decoration: underline;
+}
+
+.muncher-editor-text-code {
+  background-color: $tertiary-background-color;
+  padding: .06rem 0.25rem;
+  font-family: $monospace-font;
+  font-size: 94%;
+}
+
+.muncher-editor-link {
+  color: $link-color;
+  text-decoration: none;
+}
+
+.muncher-editor-paragraph {
+  margin: 0 0 8px;
+  position: relative;
+}
+
+.muncher-editor-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.muncher-editor-heading-h1 {
+  font-size: 1.5rem;
+  color: $primary-color;
+  font-weight: 400;
+  margin: 0 0 .7rem;
+  padding: 0;
+}
+
+.muncher-editor-heading-h2 {
+  font-size: .9rem;
+  color: $secondary-color;
+  font-weight: 700;
+  margin: .6rem 0 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.muncher-editor-quote {
+  margin: 0 0 0 1.25rem;
+  font-size: .9rem;
+  color: $secondary-color;
+  border-left-color: $tertiary-color;
+  border-left-width: .3rem;
+  border-left-style: solid;
+  padding-left: 1rem;
+}
+
+.muncher-editor-list-ol {
+  padding: 0;
+  margin: 0 0 0 1rem;
+}
+
+.muncher-editor-list-ul {
+  padding: 0;
+  margin: 0 0 0 1rem;
+}
+
+.muncher-editor-listitem {
+  margin: .5rem 2rem .5rem 2rem;
+}
+
+.muncher-editor-nested-listitem {
+  list-style-type: none;
+}
+
