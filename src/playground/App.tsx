@@ -1,4 +1,4 @@
-import {Muncher} from "../Muncher.tsx";
+import {Muncher} from "../components/Muncher.tsx";
 import "./assets/App.scss";
 
 export const App: React.FC = () => {

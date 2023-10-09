@@ -1,4 +1,4 @@
-@import "/src/assets/scss/variables";
+@import "/src/components/assets/scss/variables";
 .link-editor {
   display: flex;
   position: absolute;
@@ -83,7 +83,7 @@
 }
 
 .link-editor div.link-edit {
-  background-image: url(src/assets/icons/pencil-fill.svg);
+  background-image: url(../../assets/icons/pencil-fill.svg);
   background-size: 16px;
   background-position: center;
   background-repeat: no-repeat;
@@ -97,7 +97,7 @@
 }
 
 .link-editor div.link-trash {
-  background-image: url(src/assets/icons/trash.svg);
+  background-image: url(../../assets/icons/trash.svg);
   background-size: 16px;
   background-position: center;
   background-repeat: no-repeat;
@@ -111,7 +111,7 @@
 }
 
 .link-editor div.link-cancel {
-  background-image: url(src/assets/icons/close.svg);
+  background-image: url(../../assets/icons/close.svg);
   background-size: 16px;
   background-position: center;
   background-repeat: no-repeat;
@@ -126,7 +126,7 @@
 }
 
 .link-editor div.link-confirm {
-  background-image: url(src/assets/icons/success-alt.svg);
+  background-image: url(../../assets/icons/success-alt.svg);
   background-size: 16px;
   background-position: center;
   background-repeat: no-repeat;

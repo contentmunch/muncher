@@ -1,5 +1,5 @@
 import type {Meta, StoryObj} from '@storybook/react';
-import {Muncher} from "../Muncher.tsx";
+import {Muncher} from "../components/Muncher.tsx";
 import "./assets/Muncher.stories.scss";
 
 const meta = {
