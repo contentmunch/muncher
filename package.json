@@ -1,6 +1,6 @@
 {
   "name": "@contentmunch/muncher",
-  "version": "3.0.9",
+  "version": "3.1.0",
   "description": "Content editor wysiwyg for contentmunch",
   "author": "asikpradhan",
   "license": "MIT",
@@ -14,7 +14,10 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o docs",
     "deploy": "npm run build-storybook",
-    "postdeploy": "cp public/CNAME docs/CNAME && mv docs/assets/*.svg docs"
+    "move-files": "cp public/CNAME docs/CNAME && mv docs/assets/*.svg docs",
+    "rename-files": "cd docs/assets; for file in _*.js*; do mv ${file} `echo $file | cut -c 2-`; done; sed -i -e 's/_commonjsHelpers/commonjsHelpers/g' *.js*",
+    "clean-files": "rm -rf docs/assets/*.js*-e",
+    "postdeploy": "npm run move-files && npm run rename-files && npm run clean-files"
   },
   "main": "dist/muncher.umd.js",
   "module": "dist/muncher.es.js",

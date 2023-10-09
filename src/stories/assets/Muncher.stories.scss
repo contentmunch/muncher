@@ -7,12 +7,16 @@ body {
     justify-content: center;
     align-items: center;
     align-content: center;
-    margin-top: 5rem;
   }
 
-  .muncher-editor-input {
-    max-width: 45rem;
-    min-height: 10rem;
+  .muncher-editor {
+    margin-top: 5rem;
+
+    .muncher-editor-input {
+      max-width: 45rem;
+      min-height: 10rem;
+    }
   }
+
 
 }
