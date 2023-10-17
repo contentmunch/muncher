@@ -1,6 +1,6 @@
 {
   "name": "@contentmunch/muncher",
-  "version": "3.1.1",
+  "version": "3.2.1",
   "description": "Content editor wysiwyg for contentmunch",
   "author": "asikpradhan",
   "license": "MIT",
@@ -32,13 +32,21 @@
   "directories": {
     "lib": "dist"
   },
+  "bugs": {
+    "url": "https://github.com/contentmunch/muncher/issues"
+  },
+  "homepage": "https://www.muncher.dev/",
+  "keywords": [
+    "wysiwyg",
+    "contentmunch",
+    "muncher",
+    "content",
+    "editor",
+    "lexical"
+  ],
   "peerDependencies": {
     "react": ">=18.x",
     "react-dom": ">=18.x"
-  },
-  "dependencies": {
-    "@lexical/react": "^0.12.2",
-    "lexical": "^0.12.2"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.4.6",
@@ -58,6 +66,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "eslint-plugin-storybook": "^0.6.14",
+    "@lexical/react": "^0.12.2",
+    "lexical": "^0.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.69.0",
@@ -68,17 +78,5 @@
     "vite-plugin-dts": "^3.6.0",
     "vite-plugin-linter": "^2.0.7",
     "vite-tsconfig-paths": "^4.2.1"
-  },
-  "bugs": {
-    "url": "https://github.com/contentmunch/muncher/issues"
-  },
-  "homepage": "https://www.muncher.dev/",
-  "keywords": [
-    "wysiwyg",
-    "contentmunch",
-    "muncher",
-    "content",
-    "editor",
-    "lexical"
-  ]
+  }
 }
