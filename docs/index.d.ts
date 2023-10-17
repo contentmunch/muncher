@@ -1,3 +1,2 @@
-import {Muncher} from "./Muncher.tsx";
-
+import { Muncher } from "./Muncher.tsx";
 export { Muncher };

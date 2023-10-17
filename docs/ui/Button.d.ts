@@ -1,5 +1,4 @@
 import React from "react";
-
 export declare const Button: React.FC<ButtonProps>;
 export interface ButtonProps {
     disabled: boolean;
