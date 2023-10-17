@@ -14,7 +14,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o docs",
     "deploy": "npm run build-storybook",
-    "move-files": "cp public/CNAME docs/CNAME && mv docs/assets/*.svg docs",
+    "move-files": "cp public/CNAME docs/CNAME && cp public/favicon.svg docs/favicon.svg && mv docs/assets/*.svg docs",
     "rename-files": "cd docs/assets; for file in _*.js*; do mv ${file} `echo $file | cut -c 2-`; done; sed -i -e 's/_commonjsHelpers/commonjsHelpers/g' *.js*",
     "clean-files": "rm -rf docs/assets/*.js*-e",
     "postdeploy": "npm run move-files && npm run rename-files && npm run clean-files"
@@ -49,10 +49,10 @@
     "react-dom": ">=18.x"
   },
   "devDependencies": {
+    "@lexical/react": "^0.12.2",
     "@storybook/addon-essentials": "^7.4.6",
     "@storybook/addon-interactions": "^7.4.6",
     "@storybook/addon-links": "^7.4.6",
-    "@storybook/addon-onboarding": "^1.0.8",
     "@storybook/blocks": "^7.4.6",
     "@storybook/react": "^7.4.6",
     "@storybook/react-vite": "^7.4.6",
@@ -66,7 +66,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "eslint-plugin-storybook": "^0.6.14",
-    "@lexical/react": "^0.12.2",
     "lexical": "^0.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
