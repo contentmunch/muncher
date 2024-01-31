@@ -14,7 +14,7 @@ import {AutoFocusPlugin} from "@lexical/react/LexicalAutoFocusPlugin";
 import {HtmlPlugin, HtmlProps} from "./plugins/HtmlPlugin";
 import ExampleTheme from "./themes/MuncherEditorTheme";
 import {LinkPlugin} from "@lexical/react/LexicalLinkPlugin";
-import "./assets/scss/Muncher.scss";
+import "./assets/Muncher.scss";
 import {ToolbarPlugin} from "./plugins/ToolbarPlugin";
 import {FloatingLinkEditorPlugin} from "./plugins/FloatingLinkEditorPlugin";
 

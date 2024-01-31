@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react';
 import {Muncher} from "./Muncher";
-import "./assets/scss/Muncher.stories.scss";
+import "./assets/Muncher.stories.scss";
 
 const meta = {
     title: 'Muncher',
