@@ -1,0 +1,86 @@
+@import "/src/assets/scss/variables";
+
+.muncher-editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: .05rem;
+  background: hsl(0, 0%, 100%);
+  padding: 0.3rem;
+  border-top-left-radius: 0.6rem;
+  border-top-right-radius: 0.6rem;
+  vertical-align: middle;
+
+  i.undo {
+    background-image: url(../../assets/icons/arrow-counterclockwise.svg);
+  }
+
+  i.redo {
+    background-image: url(../../assets/icons/arrow-clockwise.svg);
+  }
+
+  i.paragraph {
+    background-image: url(../../assets/icons/text-paragraph.svg);
+  }
+
+  i.bold {
+    background-image: url(../../assets/icons/type-bold.svg);
+  }
+
+  i.italic {
+    background-image: url(../../assets/icons/type-italic.svg);
+  }
+
+  i.underline {
+    background-image: url(../../assets/icons/type-underline.svg);
+  }
+
+  i.code {
+    background-image: url(../../assets/icons/code.svg);
+  }
+
+  i.link {
+    background-image: url(../../assets/icons/link.svg);
+  }
+
+  i.left-align {
+    background-image: url(../../assets/icons/text-left.svg);
+  }
+
+  i.center-align {
+    background-image: url(../../assets/icons/text-center.svg);
+  }
+
+  i.justify-align {
+    background-image: url(../../assets/icons/justify.svg);
+  }
+
+  i.right-align {
+    background-image: url(../../assets/icons/text-right.svg);
+  }
+
+  i.h1 {
+    background-image: url(../../assets/icons/type-h1.svg);
+  }
+
+  i.h2 {
+    background-image: url(../../assets/icons/type-h2.svg);
+  }
+
+  i.h3 {
+    background-image: url(../../assets/icons/type-h3.svg);
+  }
+
+  i.quote {
+    background-image: url(../../assets/icons/chat-square-quote.svg);
+  }
+
+  i.bullet-list,
+  i.ul {
+    background-image: url(../../assets/icons/list-ul.svg);
+  }
+
+  i.numbered-list,
+  i.ol {
+    background-image: url(../../assets/icons/list-ol.svg);
+  }
+}

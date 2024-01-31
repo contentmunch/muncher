@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/input-Input-stories.355a8c7d.chunk.css","mappings":"AAEA","sources":["webpack://@contentmunch/muncher-ui/./src/input/assets/InputStory.scss"],"sourcesContent":["@import 'src/assets/variables';\n\n.div-input-stories {\n  width: 16rem;\n  @media (min-width: $medium-size) {\n    width: 40rem;\n  }\n}"],"names":[],"sourceRoot":""}

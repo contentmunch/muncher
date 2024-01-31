@@ -1,0 +1,16 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-typescript",
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties"
+  ],
+  "ignore": [
+    "src/react-app-env.d.ts",
+    "src/setupTests.ts",
+    "src/**/*.test.tsx",
+    "src/**/*.stories.tsx"
+  ]
+}

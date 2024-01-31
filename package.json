@@ -1,81 +1,116 @@
 {
   "name": "@contentmunch/muncher",
-  "version": "3.2.6",
-  "description": "Content editor wysiwyg for contentmunch",
+  "version": "4.0.0",
+  "description": "Content editor wysiwyg",
   "author": "asikpradhan",
   "license": "MIT",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "prepublishOnly": "npm run build",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o docs",
-    "deploy": "npm run build-storybook",
-    "move-files": "cp public/CNAME docs/CNAME && cp public/favicon.svg docs/favicon.svg && mv docs/assets/*.svg docs",
-    "rename-files": "cd docs/assets; for file in _*.js*; do mv ${file} `echo $file | cut -c 2-`; done; sed -i -e 's/_commonjsHelpers/commonjsHelpers/g' *.js*",
-    "clean-files": "rm -rf docs/assets/*.js*-e",
-    "postdeploy": "npm run move-files && npm run rename-files && npm run clean-files"
-  },
-  "main": "dist/muncher.umd.js",
-  "module": "dist/muncher.es.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
-    "dist"
+    "lib/"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/contentmunch/muncher.git"
   },
-  "directories": {
-    "lib": "dist"
+  "scripts": {
+    "start": "npm run storybook",
+    "prebuild": "rimraf lib",
+    "build": "npm run build:types && npm run build:js ",
+    "clean:tsx": "rimraf lib/*.tsx lib/**/*.tsx lib/**/**/*.tsx lib/**/**/**/*.tsx",
+    "clean:stories": "rimraf  lib/*.stories.* lib/**/*.stories.* lib/**/**/*.stories.* lib/**/**/**/*.stories.*",
+    "clean:tests": "rimraf lib/*.test.* lib/**/*.test.* lib/setupTests.* lib/__snapshots__/",
+    "clean:reactfiles": "rimraf lib/react-app-env.d.ts",
+    "postbuild": "npm run clean:tsx && npm run clean:reactfiles && npm run clean:stories && npm run clean:tests",
+    "build:types": "cp tsconfig-tsc.json tsconfig.json && tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+    "postbuild:js": "rsync -avz --exclude='*.ts' src/ lib/",
+    "prepublishOnly": "npm run build",
+    "pretest": "cp tsconfig-test.json tsconfig.json",
+    "test": "react-scripts test -u",
+    "deploy": "npm run build-storybook",
+    "postdeploy": "cp public/CNAME docs/CNAME",
+    "storybook": "storybook dev -p 6007",
+    "build-storybook": "storybook build -o docs"
   },
-  "bugs": {
-    "url": "https://github.com/contentmunch/muncher/issues"
-  },
-  "homepage": "https://www.muncher.dev/",
-  "keywords": [
-    "wysiwyg",
-    "contentmunch",
-    "muncher",
-    "content",
-    "editor",
-    "lexical"
-  ],
   "peerDependencies": {
     "react": ">=18.x",
     "react-dom": ">=18.x"
   },
   "devDependencies": {
+    "@babel/cli": "^7.22.15",
+    "@babel/core": "^7.22.20",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/preset-env": "^7.22.20",
+    "@babel/preset-react": "^7.22.15",
+    "@babel/preset-typescript": "^7.22.15",
     "@lexical/react": "^0.12.2",
-    "@storybook/addon-essentials": "^7.4.6",
-    "@storybook/addon-interactions": "^7.4.6",
-    "@storybook/addon-links": "^7.4.6",
-    "@storybook/blocks": "^7.4.6",
-    "@storybook/react": "^7.4.6",
-    "@storybook/react-vite": "^7.4.6",
-    "@storybook/testing-library": "^0.2.2",
-    "@types/react": "^18.2.15",
+    "@storybook/addon-a11y": "^7.6.11",
+    "@storybook/addon-essentials": "^7.6.11",
+    "@storybook/addon-interactions": "^7.6.11",
+    "@storybook/addon-links": "^7.6.11",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/addon-storyshots": "^7.6.11",
+    "@storybook/blocks": "^7.6.11",
+    "@storybook/preset-create-react-app": "^7.6.11",
+    "@storybook/react": "^7.6.11",
+    "@storybook/react-webpack5": "^7.6.11",
+    "@storybook/testing-library": "^0.2.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.52",
+    "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "@vitejs/plugin-react": "^4.0.3",
-    "eslint": "^8.45.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
-    "eslint-plugin-storybook": "^0.6.14",
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "eslint-plugin-storybook": "^0.6.13",
     "lexical": "^0.12.2",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.69.0",
-    "storybook": "^7.4.6",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5",
-    "vite-plugin-css-injected-by-js": "^3.3.0",
-    "vite-plugin-dts": "^3.6.0",
-    "vite-plugin-linter": "^2.0.7",
-    "vite-tsconfig-paths": "^4.2.1"
+    "react-scripts": "5.0.1",
+    "react-test-renderer": "^18.2.0",
+    "rimraf": "^5.0.1",
+    "storybook": "^7.6.11",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.88.2"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
+  "bugs": {
+    "url": "https://github.com/contentmunch/muncher/issues"
+  },
+  "homepage": "https://www.muncher.dev",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "keywords": [
+    "html5",
+    "reactjs",
+    "ui",
+    "component driven"
+  ],
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:storybook/recommended"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
