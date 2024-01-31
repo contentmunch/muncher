@@ -44,7 +44,6 @@
     "@babel/preset-env": "^7.22.20",
     "@babel/preset-react": "^7.22.15",
     "@babel/preset-typescript": "^7.22.15",
-    "@lexical/react": "^0.12.2",
     "@storybook/addon-a11y": "^7.6.11",
     "@storybook/addon-essentials": "^7.6.11",
     "@storybook/addon-interactions": "^7.6.11",
@@ -65,7 +64,6 @@
     "@types/react-dom": "^18.2.7",
     "babel-plugin-named-exports-order": "^0.0.2",
     "eslint-plugin-storybook": "^0.6.13",
-    "lexical": "^0.12.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -78,6 +76,8 @@
     "webpack": "^5.88.2"
   },
   "dependencies": {
+    "@lexical/react": "^0.12.2",
+    "lexical": "^0.12.2",
     "normalize.css": "^8.0.1"
   },
   "bugs": {
