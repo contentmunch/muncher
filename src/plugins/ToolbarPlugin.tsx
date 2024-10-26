@@ -10,11 +10,8 @@ import {
     COMMAND_PRIORITY_CRITICAL,
     COMMAND_PRIORITY_NORMAL,
     DEPRECATED_$isGridSelection,
-    FORMAT_ELEMENT_COMMAND,
     FORMAT_TEXT_COMMAND,
-    KEY_MODIFIER_COMMAND,
-    REDO_COMMAND,
-    UNDO_COMMAND
+    KEY_MODIFIER_COMMAND
 } from "lexical";
 import {Button} from "../ui/Button";
 import {useLexicalComposerContext} from "@lexical/react/LexicalComposerContext";
@@ -239,14 +236,7 @@ export const ToolbarPlugin: React.FC<ToolbarPluginProps> = ({setIsLinkEditMode, 
         <div className="muncher-editor-toolbar">
             {variant === "basic" ?
                 <></> : <>
-                    <Button
-                        disabled={!isEditable}
-                        active={blockType === "paragraph"}
-                        onClick={() => formatParagraph()}
-                        title="Paragraph"
-                        ariaLabel="Paragraph">
-                        <i className="paragraph"/>
-                    </Button>
+
                     <Button
                         disabled={!isEditable}
                         active={blockType === "h1"}
@@ -280,7 +270,14 @@ export const ToolbarPlugin: React.FC<ToolbarPluginProps> = ({setIsLinkEditMode, 
                         <i className="quote"/>
                     </Button></>
             }
-
+            <Button
+                disabled={!isEditable}
+                active={blockType === "paragraph"}
+                onClick={() => formatParagraph()}
+                title="Paragraph"
+                ariaLabel="Paragraph">
+                <i className="paragraph"/>
+            </Button>
             <Button
                 disabled={!isEditable}
                 active={blockType === "bullet"}
