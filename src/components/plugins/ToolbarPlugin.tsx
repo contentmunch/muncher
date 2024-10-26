@@ -10,11 +10,8 @@ import {
     COMMAND_PRIORITY_CRITICAL,
     COMMAND_PRIORITY_NORMAL,
     DEPRECATED_$isGridSelection,
-    FORMAT_ELEMENT_COMMAND,
     FORMAT_TEXT_COMMAND,
-    KEY_MODIFIER_COMMAND,
-    REDO_COMMAND,
-    UNDO_COMMAND
+    KEY_MODIFIER_COMMAND
 } from "lexical";
 import {Button} from "../ui/Button.tsx";
 import {useLexicalComposerContext} from "@lexical/react/LexicalComposerContext";
@@ -238,24 +235,7 @@ export const ToolbarPlugin: React.FC<ToolbarPluginProps> = ({setIsLinkEditMode, 
     return (
         <div className="muncher-editor-toolbar">
             {variant === "basic" ?
-                <></> : <> <Button disabled={!canUndo || !isEditable}
-                                   onClick={() => {
-                                       activeEditor.dispatchCommand(UNDO_COMMAND, undefined);
-                                   }}
-                                   title="Undo (⌘Z)"
-                                   ariaLabel="Undo">
-                    <i className="undo"/>
-                </Button>
-                    <Button
-                        disabled={!canRedo || !isEditable}
-                        onClick={() => {
-                            activeEditor.dispatchCommand(REDO_COMMAND, undefined);
-                        }}
-                        title="Redo (⌘Y)"
-                        ariaLabel="Redo">
-                        <i className="redo"/>
-                    </Button>
-                    <Divider/>
+                <></> : <>
                     <Button
                         disabled={!isEditable}
                         active={blockType === "paragraph"}
@@ -364,54 +344,11 @@ export const ToolbarPlugin: React.FC<ToolbarPluginProps> = ({setIsLinkEditMode, 
                 <i className="link"/>
             </Button>
 
-            {variant === "basic" ?
-                <></> : <>
-                    <Divider/>
-
-                    <Button
-                        disabled={!isEditable}
-                        onClick={() => {
-                            activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "left");
-                        }}
-                        title="Left Align"
-                        ariaLabel="Left Align">
-                        <i className="left-align"/>
-                    </Button>
-                    <Button
-                        disabled={!isEditable}
-                        onClick={() => {
-                            activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "center");
-                        }}
-                        title="Center Align"
-                        ariaLabel="Center Align">
-                        <i className="center-align"/>
-                    </Button>
-                    <Button
-                        disabled={!isEditable}
-                        onClick={() => {
-                            activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "right");
-                        }}
-                        title="Right Align"
-                        ariaLabel="Right Align">
-                        <i className="right-align"/>
-                    </Button>
-                    <Button
-                        disabled={!isEditable}
-                        onClick={() => {
-                            activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "justify");
-                        }}
-                        title="Justify Align"
-                        ariaLabel="Justify Align">
-                        <i className="justify-align"/>
-                    </Button>
-                </>
-            }
-
         </div>
     );
 }
 
 export interface ToolbarPluginProps {
     setIsLinkEditMode: Dispatch<boolean>
-    variant?: "basic"
+    variant?: "basic" | "simple"
 }

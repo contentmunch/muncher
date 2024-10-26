@@ -8,7 +8,7 @@ export const App: React.FC = () => {
             <h1>Muncher Playground</h1>
             <div className="container">
                 <Muncher html={html}
-                         variant="basic"
+                         variant="simple"
                          onChange={(html: string, characterCount: number) => {
                              console.log("count:", characterCount);
                              console.log(html);

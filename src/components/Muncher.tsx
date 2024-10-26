@@ -80,5 +80,5 @@ export const Muncher: React.FC<MuncherProps> = ({onChange, html, variant}) => {
 };
 
 export interface MuncherProps extends HtmlProps {
-    variant?: "basic"
+    variant?: "basic" | "simple"
 }
