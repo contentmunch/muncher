@@ -8,7 +8,6 @@ export const HtmlPlugin: React.FC<HtmlPluginProps> = ({html, onChange}) => {
     const [editor] = useLexicalComposerContext();
 
     useEffect(() => {
-        console.log("html:", html);
         if (!html) return;
 
         editor.update(() => {

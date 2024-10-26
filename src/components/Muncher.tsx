@@ -18,7 +18,7 @@ import "./assets/scss/Muncher.scss";
 import {ToolbarPlugin} from "./plugins/ToolbarPlugin.tsx";
 import {FloatingLinkEditorPlugin} from "./plugins/FloatingLinkEditorPlugin.tsx";
 
-export const Muncher: React.FC<MuncherProps> = ({onChange, html}) => {
+export const Muncher: React.FC<MuncherProps> = ({onChange, html, variant}) => {
     const [isLinkEditMode, setIsLinkEditMode] = useState<boolean>(false);
     const [floatingAnchorElem, setFloatingAnchorElem] =
         useState<HTMLElement | null>(null);
@@ -50,7 +50,7 @@ export const Muncher: React.FC<MuncherProps> = ({onChange, html}) => {
         <div className="muncher-editor">
             <LexicalComposer initialConfig={initialConfig}>
 
-                <ToolbarPlugin setIsLinkEditMode={setIsLinkEditMode}/>
+                <ToolbarPlugin setIsLinkEditMode={setIsLinkEditMode} variant={variant}/>
                 <div className="muncher-editor-inner" ref={onRef}>
                     <RichTextPlugin
                         contentEditable={<ContentEditable className="muncher-editor-input"/>}
@@ -61,6 +61,7 @@ export const Muncher: React.FC<MuncherProps> = ({onChange, html}) => {
                     <AutoFocusPlugin/>
                     <ListPlugin/>
                     <LinkPlugin/>
+
                     {floatingAnchorElem ? <FloatingLinkEditorPlugin
                         anchorElem={floatingAnchorElem}
                         isLinkEditMode={isLinkEditMode}
@@ -71,6 +72,7 @@ export const Muncher: React.FC<MuncherProps> = ({onChange, html}) => {
                         onChange={onChange}
                         html={html}
                     />
+
                 </div>
             </LexicalComposer>
         </div>
@@ -78,5 +80,5 @@ export const Muncher: React.FC<MuncherProps> = ({onChange, html}) => {
 };
 
 export interface MuncherProps extends HtmlProps {
-
+    variant?: "basic"
 }

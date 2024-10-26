@@ -43,7 +43,7 @@ const blockTypeToBlockName = {
     paragraph: "Normal",
     quote: "Quote",
 };
-export const ToolbarPlugin: React.FC<ToolbarPluginProps> = ({setIsLinkEditMode}) => {
+export const ToolbarPlugin: React.FC<ToolbarPluginProps> = ({setIsLinkEditMode, variant}) => {
     const [editor] = useLexicalComposerContext();
     const [activeEditor] = useState(editor);
     const [blockType, setBlockType] =
@@ -237,64 +237,67 @@ export const ToolbarPlugin: React.FC<ToolbarPluginProps> = ({setIsLinkEditMode})
 
     return (
         <div className="muncher-editor-toolbar">
-            <Button disabled={!canUndo || !isEditable}
-                    onClick={() => {
-                        activeEditor.dispatchCommand(UNDO_COMMAND, undefined);
-                    }}
-                    title="Undo (⌘Z)"
-                    ariaLabel="Undo">
-                <i className="undo"/>
-            </Button>
-            <Button
-                disabled={!canRedo || !isEditable}
-                onClick={() => {
-                    activeEditor.dispatchCommand(REDO_COMMAND, undefined);
-                }}
-                title="Redo (⌘Y)"
-                ariaLabel="Redo">
-                <i className="redo"/>
-            </Button>
-            <Divider/>
-            <Button
-                disabled={!isEditable}
-                active={blockType === "paragraph"}
-                onClick={() => formatParagraph()}
-                title="Paragraph"
-                ariaLabel="Paragraph">
-                <i className="paragraph"/>
-            </Button>
-            <Button
-                disabled={!isEditable}
-                active={blockType === "h1"}
-                onClick={() => formatHeading("h1")}
-                title="Heading 1"
-                ariaLabel="Heading 1">
-                <i className="h1"/>
-            </Button>
-            <Button
-                disabled={!isEditable}
-                active={blockType === "h2"}
-                onClick={() => formatHeading("h2")}
-                title="Heading 2"
-                ariaLabel="Heading 2">
-                <i className="h2"/>
-            </Button>
-            <Button
-                disabled={!isEditable}
-                active={blockType === "h3"}
-                onClick={() => formatHeading("h3")}
-                title="Heading 3"
-                ariaLabel="Heading 3">
-                <i className="h3"/>
-            </Button>
-            <Button
-                disabled={!isEditable}
-                active={blockType === "quote"}
-                onClick={() => formatQuote()}
-                title="Quote"
-                ariaLabel="Quote">
-                <i className="quote"/>
-            </Button>
+            {variant === "basic" ?
+                <></> : <> <Button disabled={!canUndo || !isEditable}
+                                   onClick={() => {
+                                       activeEditor.dispatchCommand(UNDO_COMMAND, undefined);
+                                   }}
+                                   title="Undo (⌘Z)"
+                                   ariaLabel="Undo">
+                    <i className="undo"/>
+                </Button>
+                    <Button
+                        disabled={!canRedo || !isEditable}
+                        onClick={() => {
+                            activeEditor.dispatchCommand(REDO_COMMAND, undefined);
+                        }}
+                        title="Redo (⌘Y)"
+                        ariaLabel="Redo">
+                        <i className="redo"/>
+                    </Button>
+                    <Divider/>
+                    <Button
+                        disabled={!isEditable}
+                        active={blockType === "paragraph"}
+                        onClick={() => formatParagraph()}
+                        title="Paragraph"
+                        ariaLabel="Paragraph">
+                        <i className="paragraph"/>
+                    </Button>
+                    <Button
+                        disabled={!isEditable}
+                        active={blockType === "h1"}
+                        onClick={() => formatHeading("h1")}
+                        title="Heading 1"
+                        ariaLabel="Heading 1">
+                        <i className="h1"/>
+                    </Button>
+                    <Button
+                        disabled={!isEditable}
+                        active={blockType === "h2"}
+                        onClick={() => formatHeading("h2")}
+                        title="Heading 2"
+                        ariaLabel="Heading 2">
+                        <i className="h2"/>
+                    </Button>
+                    <Button
+                        disabled={!isEditable}
+                        active={blockType === "h3"}
+                        onClick={() => formatHeading("h3")}
+                        title="Heading 3"
+                        ariaLabel="Heading 3">
+                        <i className="h3"/>
+                    </Button>
+                    <Button
+                        disabled={!isEditable}
+                        active={blockType === "quote"}
+                        onClick={() => formatQuote()}
+                        title="Quote"
+                        ariaLabel="Quote">
+                        <i className="quote"/>
+                    </Button></>
+            }
+
             <Button
                 disabled={!isEditable}
                 active={blockType === "bullet"}
@@ -360,48 +363,55 @@ export const ToolbarPlugin: React.FC<ToolbarPluginProps> = ({setIsLinkEditMode})
                 title="Insert link">
                 <i className="link"/>
             </Button>
-            <Divider/>
-            <Button
-                disabled={!isEditable}
-                onClick={() => {
-                    activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "left");
-                }}
-                title="Left Align"
-                ariaLabel="Left Align">
-                <i className="left-align"/>
-            </Button>
-            <Button
-                disabled={!isEditable}
-                onClick={() => {
-                    activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "center");
-                }}
-                title="Center Align"
-                ariaLabel="Center Align">
-                <i className="center-align"/>
-            </Button>
-            <Button
-                disabled={!isEditable}
-                onClick={() => {
-                    activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "right");
-                }}
-                title="Right Align"
-                ariaLabel="Right Align">
-                <i className="right-align"/>
-            </Button>
-            <Button
-                disabled={!isEditable}
-                onClick={() => {
-                    activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "justify");
-                }}
-                title="Justify Align"
-                ariaLabel="Justify Align">
-                <i className="justify-align"/>
-            </Button>
+
+            {variant === "basic" ?
+                <></> : <>
+                    <Divider/>
+
+                    <Button
+                        disabled={!isEditable}
+                        onClick={() => {
+                            activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "left");
+                        }}
+                        title="Left Align"
+                        ariaLabel="Left Align">
+                        <i className="left-align"/>
+                    </Button>
+                    <Button
+                        disabled={!isEditable}
+                        onClick={() => {
+                            activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "center");
+                        }}
+                        title="Center Align"
+                        ariaLabel="Center Align">
+                        <i className="center-align"/>
+                    </Button>
+                    <Button
+                        disabled={!isEditable}
+                        onClick={() => {
+                            activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "right");
+                        }}
+                        title="Right Align"
+                        ariaLabel="Right Align">
+                        <i className="right-align"/>
+                    </Button>
+                    <Button
+                        disabled={!isEditable}
+                        onClick={() => {
+                            activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "justify");
+                        }}
+                        title="Justify Align"
+                        ariaLabel="Justify Align">
+                        <i className="justify-align"/>
+                    </Button>
+                </>
+            }
+
         </div>
     );
 }
 
 export interface ToolbarPluginProps {
     setIsLinkEditMode: Dispatch<boolean>
-
+    variant?: "basic"
 }
